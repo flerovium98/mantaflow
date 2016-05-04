@@ -161,6 +161,9 @@ SET(PP_SOURCES
 	source/plugin/waves.cpp
 	source/python/defines.py
 	source/test.cpp
+	source/ex1.cpp
+	source/ex2.cpp
+	source/ex3.cpp
 )
 
 SET(PP_HEADERS
@@ -183,6 +186,7 @@ SET(PP_HEADERS
 	source/edgecollapse.h
 	source/vortexpart.h
 	source/turbulencepart.h
+	source/pcgsolver.h
 )
 
 # no pre-processing needed
@@ -534,7 +538,7 @@ IF(NOT WIN32)
 		add_definitions( -O0 -fno-inline -Wall )
 	ELSE()
 		# non-debug, optimized version
-		add_definitions( -O3 -Wall )
+		add_definitions( -O3 -Wall -std=c++11)
 	ENDIF()
 	# c++11 required for all c++ sources
 	set_source_files_properties(${PP_SOURCES} PROPERTIES COMPILE_FLAGS "  -std=c++11  " )
