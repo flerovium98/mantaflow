@@ -33,6 +33,16 @@ double minReduction(const Grid<Real>& v)
 		sum = v[idx];
 }
 
+//! quick fix for the exercise
+PYTHON() void resampleVec3ToMac (Grid<Vec3>& source, MACGrid &target ) {
+	FOR_IJK_BND(target,1) {
+		target(i,j,k)[0] = 0.5*(source(i-1,j,k)[0]+source(i,j,k))[0];
+		target(i,j,k)[1] = 0.5*(source(i,j-1,k)[1]+source(i,j,k))[1];
+		if(target.is3D()) {
+		target(i,j,k)[2] = 0.5*(source(i,j,k-1)[2]+source(i,j,k))[2]; }
+	}
+}
+
 
 PYTHON() void getCurl(MACGrid& vel, Grid<Real>& vort, int comp) {
 	Grid<Vec3> velCenter(vel.getParent()), curl(vel.getParent());
