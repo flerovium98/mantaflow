@@ -33,7 +33,7 @@ double minReduction(const Grid<Real>& v)
 		sum = v[idx];
 }
 
-//! quick fix for the exercise
+//! resample centered velocity grid to staggered mac grid
 PYTHON() void resampleVec3ToMac (Grid<Vec3>& source, MACGrid &target ) {
 	FOR_IJK_BND(target,1) {
 		target(i,j,k)[0] = 0.5*(source(i-1,j,k)[0]+source(i,j,k))[0];
